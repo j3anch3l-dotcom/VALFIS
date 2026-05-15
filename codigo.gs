@@ -269,7 +269,7 @@ function generarPDF(registroId, tipoPeriodo) {
 
 
 // ============================================================
-// GENERAR HTML DEL FORMATO v16 (Optimización final de diseño)
+// GENERAR HTML DEL FORMATO v17 (Ajuste de espaciado solicitado)
 // ============================================================
 function generarHTMLFormato(r, tipoPeriodo) {
   var esQuincenal = (tipoPeriodo === true || tipoPeriodo === 'quincenal');
@@ -316,6 +316,7 @@ function generarHTMLFormato(r, tipoPeriodo) {
     '<tr><td align="center" style="'+FB+'font-size:9pt;">FISCALÍA GENERAL DEL ESTADO DE MORELOS</td></tr>'+
     '<tr><td height="5"></td></tr>'+
     '<tr><td align="center" style="'+FB+'font-size:8.2pt;text-decoration:underline;">VISTO BUENO PARA EL OTORGAMIENTO DE CRÉDITO</td></tr>'+
+    '<tr><td height="8"></td></tr>'+
   '</table>'+
 
   /* SECCIÓN 1: DATOS DE LA EMPRESA */
@@ -388,6 +389,7 @@ function generarHTMLFormato(r, tipoPeriodo) {
       '<td style="'+F+UL+'">3.0 % global + IVA</td>'+
     '</tr>'+
   '</table>'+
+  '<div style="height:6px;"></div>'+
 
   /* SECCIÓN 4: PARA SER LLENADO POR LA DT */
   '<div style="'+SEC+'">PARA SER LLENADO POR LA DIRECCIÓN TÉCNICA DE PERSONAL</div>'+
@@ -398,7 +400,7 @@ function generarHTMLFormato(r, tipoPeriodo) {
     '</tr>'+
     '<tr>'+
       '<td style="'+FB+'">SUELDO NETO: $</td><td style="'+F+UL+'">&nbsp;</td>'+
-      '<td style="'+FB+'" style="padding-left:10px;">FECHA DE INGRESO:</td><td style="'+F+UL+'">&nbsp;</td>'+
+      '<td style="'+FB+'padding-left:10px;">FECHA DE INGRESO:</td><td style="'+F+UL+'">&nbsp;</td>'+
     '</tr>'+
   '</table>'+
 
