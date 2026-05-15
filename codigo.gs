@@ -346,7 +346,7 @@ function generarHTMLFormato(r, tipoPeriodo) {
     'table{border-collapse:collapse;width:100%;margin-bottom:1px;}'+
     '.label{'+FB+'white-space:nowrap;padding-right:5px;vertical-align:bottom;}'+
     '.value{'+F+UL+'padding-left:5px;vertical-align:bottom;}'+
-    '.chk-box{border:1px solid #000;width:25px;height:18px;text-align:center;display:inline-block;line-height:18px;vertical-align:middle;margin-left:5px;}'+
+    '.chk-box{width:25px;height:18px;text-align:center;display:inline-block;line-height:18px;vertical-align:middle;margin-left:5px;}'+
     '.header-text{'+FB+'font-size:10.5pt;margin:0;text-align:center;}'+
     '.no-ul{border-bottom:none !important;}'+
   '</style></head><body>'+
@@ -441,14 +441,14 @@ function generarHTMLFormato(r, tipoPeriodo) {
     '</tr>'+
   '</table>'+
 
-  /* SECCIÓN 5: SELLOS Y FIRMAS */
+  /* SECCIÓN 5: SELLOS Y FIRMAS (Todo dentro de un mismo marco según imagen) */
   '<div style="border:1px solid #000; padding:15px; margin-top:15px;">'+
     '<div style="'+FB+'text-align:center; margin-bottom:20px; font-size:8.5pt;">'+
       'SELLO AUTORIZADO DEL CENTRO DE TRABAJO<br>'+
       'QUE CERTIFICA LOS DATOS DEL TRABAJADOR'+
     '</div>'+
 
-    '<table style="margin-bottom:15px;">'+
+    '<table style="margin-bottom:20px;">'+
       '<tr>'+
         '<td style="width:60%; text-align:center; vertical-align:bottom; padding-bottom:5px;">'+
           '<div style="width:85%; border-bottom:1px solid #000; margin: 0 auto; height:80px;"></div>'+
@@ -461,13 +461,13 @@ function generarHTMLFormato(r, tipoPeriodo) {
         '</td>'+
       '</tr>'+
     '</table>'+
-  '</div>'+
 
-  '<table style="margin-top:10px;">'+
-    '<tr><td class="label" style="width:180px;">NOMBRE DE QUIEN CERTIFICA:</td><td class="value">&nbsp;</td></tr>'+
-    '<tr><td class="label">PUESTO:</td><td class="value">&nbsp;</td></tr>'+
-    '<tr><td class="label">FECHA DE CERTIFICACIÓN:</td><td class="value">&nbsp;</td></tr>'+
-  '</table>'+
+    '<table>'+
+      '<tr><td class="label" style="width:180px;">NOMBRE DE QUIEN CERTIFICA:</td><td class="value">&nbsp;</td></tr>'+
+      '<tr><td class="label">PUESTO:</td><td class="value">&nbsp;</td></tr>'+
+      '<tr><td class="label">FECHA DE CERTIFICACIÓN:</td><td class="value">&nbsp;</td></tr>'+
+    '</table>'+
+  '</div>'+
 
   '</body></html>';
 }
