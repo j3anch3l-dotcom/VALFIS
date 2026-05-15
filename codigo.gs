@@ -254,6 +254,7 @@ function generarPDF(registroId, tipoPeriodo) {
     pdfBlob.setName('Validacion_' + tipoPeriodo + '_' + registroId + '.pdf');
 
     var pdfFile = DriveApp.createFile(pdfBlob);
+    pdfFile.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
     DriveApp.getFileById(docId).setTrashed(true);
 
     var pdfId = pdfFile.getId();
@@ -268,7 +269,7 @@ function generarPDF(registroId, tipoPeriodo) {
 
 
 // ============================================================
-// GENERAR HTML DEL FORMATO v12 (Correcciones Finales)
+// GENERAR HTML DEL FORMATO v13 (Ajuste de Spacing y Compactación)
 // ============================================================
 function generarHTMLFormato(r, tipoPeriodo) {
   var esQuincenal = (tipoPeriodo === true || tipoPeriodo === 'quincenal');
@@ -295,48 +296,48 @@ function generarHTMLFormato(r, tipoPeriodo) {
   var chkN = (tipo === "nuevo") ? "X" : "&nbsp;&nbsp;";
   var chkR = (tipo === "refinanciamiento" || tipo === "refinanciado") ? "X" : "&nbsp;&nbsp;";
 
-  var F    = 'font-family:Arial,sans-serif;font-size:8.5pt;color:#000;';
-  var FB   = 'font-family:Arial,sans-serif;font-size:8.5pt;color:#000;font-weight:bold;';
+  var F    = 'font-family:Arial,sans-serif;font-size:8pt;color:#000;';
+  var FB   = 'font-family:Arial,sans-serif;font-size:8pt;color:#000;font-weight:bold;';
   var UL   = 'border-bottom:1px solid #000;';
-  var SEC  = 'font-family:Arial,sans-serif;font-size:8.5pt;color:#000;font-weight:bold;text-align:center;padding:10px 0;';
+  var SEC  = 'font-family:Arial,sans-serif;font-size:8.5pt;color:#000;font-weight:bold;text-align:center;padding:4px 0;';
 
   return '<!DOCTYPE html><html><head><meta charset="UTF-8"><style>'+
-    'body{font-family:Arial,sans-serif;margin:0;padding:5mm 10mm;line-height:1.15;color:#000;}'+
+    'body{font-family:Arial,sans-serif;margin:0;padding:5mm 12mm;line-height:1.1;color:#000;}'+
     'table{border-collapse:collapse;width:100%;margin-bottom:1px;border:none;}'+
-    'td{padding:2px 0; border:none;}'+
+    'td{padding:1.5px 0; border:none;}'+
     '.label{'+FB+'white-space:nowrap;padding-right:5px;vertical-align:bottom;}'+
     '.value{'+F+'border-bottom:1px solid #000;padding-left:5px;vertical-align:bottom;}'+
-    '.header-text{'+FB+'font-size:10.5pt;margin:0;text-align:center;}'+
-    '.chk-box{border:1px solid #000; width:14px; height:14px; display:inline-block; text-align:center; line-height:14px; font-weight:bold;}'+
+    '.header-text{'+FB+'font-size:10pt;margin:0;text-align:center;}'+
+    '.chk-box{border:1px solid #000; width:12px; height:12px; display:inline-block; text-align:center; line-height:12px; font-weight:bold; font-size:8pt;}'+
   '</style></head><body>'+
 
   /* ENCABEZADO */
-  '<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom:15px;">'+
-    '<tr><td align="center" style="'+FB+'font-size:10.5pt;">DIRECCIÓN GENERAL DE RECURSOS HUMANOS</td></tr>'+
-    '<tr><td align="center" style="'+FB+'font-size:10.5pt;">FISCALÍA GENERAL DEL ESTADO DE MORELOS</td></tr>'+
-    '<tr><td height="12"></td></tr>'+
-    '<tr><td align="center" style="'+FB+'font-size:10.5pt;text-decoration:underline;">VISTO BUENO PARA EL OTORGAMIENTO DE CRÉDITO</td></tr>'+
+  '<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom:10px;">'+
+    '<tr><td align="center" style="'+FB+'font-size:10pt;">DIRECCIÓN GENERAL DE RECURSOS HUMANOS</td></tr>'+
+    '<tr><td align="center" style="'+FB+'font-size:10pt;">FISCALÍA GENERAL DEL ESTADO DE MORELOS</td></tr>'+
+    '<tr><td height="8"></td></tr>'+
+    '<tr><td align="center" style="'+FB+'font-size:9.5pt;text-decoration:underline;">VISTO BUENO PARA EL OTORGAMIENTO DE CRÉDITO</td></tr>'+
   '</table>'+
 
   /* SECCIÓN 1: DATOS DE LA EMPRESA */
   '<div style="'+SEC+'">DATOS DE LA EMPRESA</div>'+
   '<table width="100%" border="0" cellspacing="0" cellpadding="0">'+
     '<tr>'+
-      '<td width="75%" valign="top">'+
-        '<table width="100%" border="0" cellspacing="0" cellpadding="2">'+
+      '<td width="72%" valign="top" style="padding-right:15px;">'+
+        '<table width="100%" border="0" cellspacing="0" cellpadding="1">'+
           '<tr><td style="'+FB+'" width="165">NOMBRE DE LA EMPRESA:</td><td style="'+F+UL+'">ACÉRCATE A TU NÓMINA S.A.P.I. DE C.V.</td></tr>'+
           '<tr><td style="'+FB+'">NOMBRE DEL VENDEDOR:</td><td style="'+F+UL+'">'+(r.Nombre_Promotor||'')+'</td></tr>'+
         '</table>'+
-        '<table width="100%" border="0" cellspacing="0" cellpadding="2" style="margin-top:8px;">'+
+        '<table width="100%" border="0" cellspacing="0" cellpadding="1" style="margin-top:6px;">'+
           '<tr>'+
             '<td style="'+FB+'" width="50">FECHA:</td>'+
-            '<td style="'+F+UL+'" width="40" align="center">'+fDia+'</td><td width="20" align="center" valign="bottom">/</td>'+
-            '<td style="'+F+UL+'" width="40" align="center">'+fMes+'</td><td width="20" align="center" valign="bottom">/</td>'+
-            '<td style="'+F+UL+'" width="60" align="center">'+fAnio+'</td>'+
+            '<td style="'+F+UL+'" width="35" align="center">'+fDia+'</td><td width="15" align="center" valign="bottom">/</td>'+
+            '<td style="'+F+UL+'" width="35" align="center">'+fMes+'</td><td width="15" align="center" valign="bottom">/</td>'+
+            '<td style="'+F+UL+'" width="50" align="center">'+fAnio+'</td>'+
             '<td width="30"></td>'+
           '</tr>'+
         '</table>'+
-        '<table width="100%" border="0" cellspacing="0" cellpadding="2" style="margin-top:10px;">'+
+        '<table width="100%" border="0" cellspacing="0" cellpadding="1" style="margin-top:8px;">'+
           '<tr>'+
             '<td style="'+FB+'" width="55">NUEVO</td><td width="40" align="center"><span class="chk-box">'+chkN+'</span></td>'+
             '<td width="40"></td>'+
@@ -344,10 +345,10 @@ function generarHTMLFormato(r, tipoPeriodo) {
           '</tr>'+
         '</table>'+
       '</td>'+
-      '<td width="25%" align="right" valign="top">'+
-         '<table border="1" cellspacing="0" cellpadding="0" style="border:1px solid #000; width:150px; height:100px; border-collapse:collapse;">'+
-            '<tr><td align="center" valign="middle" height="100" style="border:1px solid #000;">'+
-               '<img src="'+urlImagen+'" width="140" height="90" style="display:block;">'+
+      '<td width="28%" align="right" valign="top">'+
+         '<table border="1" cellspacing="0" cellpadding="0" style="border:1px solid #000; width:140px; height:85px; border-collapse:collapse;">'+
+            '<tr><td align="center" valign="middle" height="85" style="border:1px solid #000;">'+
+               '<img src="'+urlImagen+'" width="130" height="75" style="display:block;">'+
             '</td></tr>'+
          '</table>'+
       '</td>'+
@@ -356,7 +357,7 @@ function generarHTMLFormato(r, tipoPeriodo) {
 
   /* SECCIÓN 2: DATOS DEL TRABAJADOR */
   '<div style="'+SEC+'">DATOS DEL TRABAJADOR</div>'+
-  '<table width="100%" border="0" cellspacing="0" cellpadding="3">'+
+  '<table width="100%" border="0" cellspacing="0" cellpadding="2">'+
     '<tr><td style="'+FB+'" width="175">NOMBRE DEL TRABAJADOR:</td><td style="'+F+UL+'" colspan="3">'+(r.Nombre_Trabajador||'')+'</td></tr>'+
     '<tr><td style="'+FB+'">DOMICILIO PARTICULAR:</td><td style="'+F+UL+'" colspan="3">'+(r.Domicilio||'')+'</td></tr>'+
     '<tr>'+
@@ -373,7 +374,7 @@ function generarHTMLFormato(r, tipoPeriodo) {
 
   /* SECCIÓN 3: DATOS DEL CRÉDITO */
   '<div style="'+SEC+'">DATOS DEL CRÉDITO</div>'+
-  '<table width="100%" border="0" cellspacing="0" cellpadding="3">'+
+  '<table width="100%" border="0" cellspacing="0" cellpadding="2">'+
     '<tr>'+
       '<td style="'+FB+'" width="150">MONTO SOLICITADO: $</td><td style="'+F+UL+'" width="38%">'+(r.Monto_Solicitado||'')+'</td>'+
       '<td style="'+FB+'" width="60" style="padding-left:15px;">PLAZO:</td><td style="'+F+UL+'">'+(r.Plazo||'')+'</td>'+
@@ -391,7 +392,7 @@ function generarHTMLFormato(r, tipoPeriodo) {
 
   /* SECCIÓN 4: PARA SER LLENADO POR LA DT */
   '<div style="'+SEC+'">PARA SER LLENADO POR LA DIRECCIÓN TÉCNICA DE PERSONAL</div>'+
-  '<table width="100%" border="0" cellspacing="0" cellpadding="3">'+
+  '<table width="100%" border="0" cellspacing="0" cellpadding="2">'+
     '<tr>'+
       '<td style="'+FB+'" width="175">PERCEPCIÓN '+PT+': $</td><td style="'+F+UL+'" width="30%">&nbsp;</td>'+
       '<td style="'+FB+'" width="175" style="padding-left:15px;">DEDUCCIÓN '+PT+': $</td><td style="'+F+UL+'">&nbsp;</td>'+
@@ -402,33 +403,33 @@ function generarHTMLFormato(r, tipoPeriodo) {
     '</tr>'+
   '</table>'+
 
-  /* SECCIÓN 5: SELLOS Y FIRMAS (Marco envolvente para TODO según imagen) */
-  '<table width="100%" border="1" cellspacing="0" cellpadding="10" style="border:1px solid #000; margin-top:15px; border-collapse:collapse;">'+
+  /* SECCIÓN 5: SELLOS Y FIRMAS (Marco envolvente compacto) */
+  '<table width="100%" border="1" cellspacing="0" cellpadding="6" style="border:1px solid #000; margin-top:8px; border-collapse:collapse;">'+
     '<tr><td style="border:1px solid #000;">'+
       '<table width="100%" border="0" cellspacing="0" cellpadding="0">'+
         '<tr><td align="center" style="'+FB+'">SELLO AUTORIZADO DEL CENTRO DE TRABAJO<br>QUE CERTIFICA LOS DATOS DEL TRABAJADOR</td></tr>'+
-        '<tr><td height="20"></td></tr>'+
+        '<tr><td height="12"></td></tr>'+
         '<tr>'+
           '<td>'+
             '<table width="100%" border="0" cellspacing="0" cellpadding="0">'+
               '<tr>'+
                 '<td width="60%" align="center" valign="bottom">'+
-                  '<div style="width:85%; border-bottom:1px solid #000; height:80px;"></div>'+
-                  '<div style="'+FB+'margin-top:8px;">FIRMA</div>'+
+                  '<div style="width:80%; border-bottom:1px solid #000; height:55px;"></div>'+
+                  '<div style="'+FB+'margin-top:5px;">FIRMA</div>'+
                 '</td>'+
                 '<td width="40%" align="right">'+
-                  '<table border="1" cellspacing="0" cellpadding="0" style="border:1px solid #000; width:220px; height:135px; border-collapse:collapse;">'+
-                    '<tr><td align="center" valign="middle" height="135" style="color:#DDD;'+FB+'font-size:11pt; border:1px solid #000;">SELLO DE<br>CERTIFICADO</td></tr>'+
+                  '<table border="1" cellspacing="0" cellpadding="0" style="border:1px solid #000; width:190px; height:110px; border-collapse:collapse;">'+
+                    '<tr><td align="center" valign="middle" height="110" style="color:#DDD;'+FB+'font-size:10pt; border:1px solid #000;">SELLO DE<br>CERTIFICADO</td></tr>'+
                   '</table>'+
                 '</td>'+
               '</tr>'+
             '</table>'+
           '</td>'+
         '</tr>'+
-        '<tr><td height="20"></td></tr>'+
+        '<tr><td height="10"></td></tr>'+
         '<tr>'+
           '<td>'+
-            '<table width="100%" border="0" cellspacing="0" cellpadding="3">'+
+            '<table width="100%" border="0" cellspacing="0" cellpadding="1">'+
               '<tr><td style="'+FB+'" width="180">NOMBRE DE QUIEN CERTIFICA:</td><td style="'+F+UL+'">&nbsp;</td></tr>'+
               '<tr><td style="'+FB+'">PUESTO:</td><td style="'+F+UL+'">&nbsp;</td></tr>'+
               '<tr><td style="'+FB+'">FECHA DE CERTIFICACIÓN:</td><td style="'+F+UL+'">&nbsp;</td></tr>'+
