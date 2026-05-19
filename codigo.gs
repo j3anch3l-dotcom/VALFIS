@@ -289,7 +289,8 @@ function generarHTMLFormato(r, tipoPeriodo) {
   var partes = String(fechaHoy).split('/');
   var fDia = partes[0]||''; var fMes = partes[1]||''; var fAnio = partes[2]||'';
 
-  var urlImagen = "data:image/png;base64," + LOGO_BASE64;
+  var idImagenDrive = "1XPNH4HUSvms7IDwg8g1-95JLs_J1bU4b";
+  var urlImagen = "https://drive.google.com/uc?export=view&id=" + idImagenDrive;
 
   var tipo = String(r.Tipo || "").trim().toLowerCase();
   var chkN = (tipo === "nuevo") ? "X" : "&nbsp;&nbsp;";
