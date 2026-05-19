@@ -413,12 +413,12 @@ function generarHTMLFormato(r, tipoPeriodo) {
         '<td>'+
           '<table width="100%" border="0" cellspacing="0" cellpadding="0">'+
             '<tr>'+
-              '<td width="55%" align="center" valign="bottom">'+
+              '<td width="55%" align="center" valign="bottom" style="padding-bottom:0;">'+
                 '<div style="width:85%; border-bottom:1px solid #000; height:35px;"></div>'+
-                '<div style="'+FB+'margin-top:2px;">FIRMA</div>'+
+                '<div style="'+FB+' line-height:1; margin:0; padding:0;">FIRMA</div>'+
               '</td>'+
-              '<td width="45%" align="right">'+
-                '<table border="1" cellspacing="0" cellpadding="0" style="border:1px solid #000; width:155px; height:80px; border-collapse:collapse;">'+
+              '<td width="45%" align="right" valign="bottom" style="padding-bottom:0;">'+
+                '<table border="1" cellspacing="0" cellpadding="0" style="border:1px solid #000; width:155px; height:80px; border-collapse:collapse; margin:0;">'+
                   '<tr><td align="center" valign="middle" height="80" style="color:#DDD;'+FB+'font-size:8pt; border:1px solid #000;">SELLO DE<br>CERTIFICADO</td></tr>'+
                 '</table>'+
               '</td>'+
