@@ -269,7 +269,7 @@ function generarPDF(registroId, tipoPeriodo) {
 
 
 // ============================================================
-// GENERAR HTML DEL FORMATO v24 (Match exacto con descarga.png)
+// GENERAR HTML DEL FORMATO v25 (Incluye COMPRA DE DEUDA)
 // ============================================================
 function generarHTMLFormato(r, tipoPeriodo) {
   var esQuincenal = (tipoPeriodo === true || tipoPeriodo === 'quincenal');
@@ -290,11 +290,12 @@ function generarHTMLFormato(r, tipoPeriodo) {
   var fDia = partes[0]||''; var fMes = partes[1]||''; var fAnio = partes[2]||'';
 
   var idImagenDrive = "1XPNH4HUSvms7IDwg8g1-95JLs_J1bU4b";
-  var urlImagen = "https://drive.google.com/uc?export=view&id=" + idImagenDrive;
+  var urlImagen = "https://drive.google.com/thumbnail?id=" + idImagenDrive + "&sz=w300";
 
   var tipo = String(r.Tipo || "").trim().toLowerCase();
   var chkN = (tipo === "nuevo") ? "X" : "&nbsp;&nbsp;";
   var chkR = (tipo === "refinanciamiento" || tipo === "refinanciado") ? "X" : "&nbsp;&nbsp;";
+  var chkC = (tipo.indexOf("compra") !== -1) ? "X" : "&nbsp;&nbsp;";
 
   var F    = 'font-family:Arial,sans-serif;font-size:8pt;color:#000;';
   var FB   = 'font-family:Arial,sans-serif;font-size:8pt;color:#000;font-weight:bold;';
@@ -337,9 +338,11 @@ function generarHTMLFormato(r, tipoPeriodo) {
         '</table>'+
         '<table border="0" cellspacing="0" cellpadding="1" style="margin-top:8px;">'+
           '<tr>'+
-            '<td style="'+FB+'" width="50">NUEVO</td><td width="30" align="center"><span class="chk-box">'+chkN+'</span></td>'+
-            '<td width="60"></td>'+
-            '<td style="'+FB+'" width="120">REFINANCIAMIENTO</td><td width="30" align="center"><span class="chk-box">'+chkR+'</span></td>'+
+            '<td style="'+FB+'" width="45">NUEVO</td><td width="20" align="center"><span class="chk-box">'+chkN+'</span></td>'+
+            '<td width="20"></td>'+
+            '<td style="'+FB+'" width="115">REFINANCIAMIENTO</td><td width="20" align="center"><span class="chk-box">'+chkR+'</span></td>'+
+            '<td width="20"></td>'+
+            '<td style="'+FB+'" width="110">COMPRA DE DEUDA</td><td width="20" align="center"><span class="chk-box">'+chkC+'</span></td>'+
           '</tr>'+
         '</table>'+
       '</td>'+
